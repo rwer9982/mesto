@@ -1,0 +1,16 @@
+.editform {
+    width: 430px;
+    height: 330px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    margin: 195px auto 0;
+}
+
+@media screen and (max-width: 597px) {
+    .editform {
+        width: 282px;
+        height: 322px;
+        margin-top: 123px;
+    }
+}

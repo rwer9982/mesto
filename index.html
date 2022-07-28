@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="images/logo.png" alt="логотип_заголовка">
+      <div class="header__line"></div>
+    </header>
+    <main class="main">
+      <section class="profile">
+        <img class="profile__avatar" src="images/Avatar.jpg" alt="лого_аватар">
+        <div class="profile__info">
+          <div class="profile__row">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__editbutton">&#128393;</button>
+          </div>
+          <h2 class="profile__subtitle">Исследователь океана</h2>
+        </div>
+        <button type="button" class="profile__addbutton">&plus;</button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
+          <div class="element__title">
+            <p class="element__text">Карачаевск</p>
+            <p class="element__like">&#9825;</p>
+            <p class="element__like_active">&#10084;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
+          <div class="element__title">
+            <p class="element__text">Гора Эльбрус</p>
+            <p class="element__like">&#9825;</p>
+            <p class="element__like_active">&#10084;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
+          <div class="element__title">
+            <p class="element__text">Домбай</p>
+            <p class="element__like">&#9825;</p>
+            <p class="element__like_active">&#10084;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
+          <div class="element__title">
+            <p class="element__text">Гора Эльбрус</p>
+            <p class="element__like">&#9825;</p>
+            <p class="element__like_active">&#10084;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
+          <div class="element__title">
+            <p class="element__text">Домбай</p>
+            <p class="element__like">&#9825;</p>
+            <p class="element__like_active">&#10084;</p>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
+          <div class="element__title">
+            <p class="element__text">Карачаево-Черкессия</p>
+            <p class="element__like">&#9825;</p>
+            <p class="element__like_active">&#10084;</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Евгений Макин</p>
+    </footer>
+    <section class="popup popup_closed">
+      <div class="editform">
+        <button class="editform__closebutton"></button>
+        <h3 class="editform__title">Редактировать профиль</h3>
+        <input type="text" placeholder="Введите имя" class="editform__input editform__input_type_title">
+        <input type="text" placeholder="Введите занятие" class="editform__input editform__input_type_subtitle">
+        <button type="submit" class="editform__submitbutton">Сохранить</button>
+      </div>
+    </section>
+  </div>
+  <script src="./scripts/script.js"></script>
+</body>
+
+</html>
