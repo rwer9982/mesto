@@ -15,20 +15,10 @@ function HideEditForm() {
     popup.classList.add("popup_closed");
 };
 
-editformButton.addEventListener("click", ShowEditForm);
-editformCloseButton.addEventListener("click", HideEditForm);
-popup.addEventListener("click", function(event) {
-    if (event.target === event.currentTarget) {
-        HideEditForm();
-    }
-});
-
 function DefaultFillForm () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
 }
-
-DefaultFillForm();
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
@@ -37,4 +27,7 @@ function formSubmitHandler (evt) {
     HideEditForm();
 };
 
+DefaultFillForm();
+editformButton.addEventListener("click", ShowEditForm);
+editformCloseButton.addEventListener("click", HideEditForm);
 formElement.addEventListener("click", formSubmitHandler);

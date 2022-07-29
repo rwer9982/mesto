@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="pages/index.css">
 </head>
 
-<body>
+<body class="body">
   <div class="page">
     <header class="header">
       <img class="header__logo" src="images/logo.png" alt="логотип_заголовка">
@@ -20,53 +20,53 @@
         <div class="profile__info">
           <div class="profile__row">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__editbutton">&#128393;</button>
+            <button type="button" class="profile__editbutton"><img src="./images/pen.png" class="profile__img-pen"></button>
           </div>
           <h2 class="profile__subtitle">Исследователь океана</h2>
         </div>
-        <button type="button" class="profile__addbutton">&plus;</button>
+        <button type="button" class="profile__addbutton"><img src="./images/Vector.png" class="profile__vector" alt="Картинка_плюс"></button>
       </section>
       <section class="elements">
         <div class="element">
           <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
           <div class="element__title">
             <p class="element__text">Карачаевск</p>
-            <p class="element__like element__like_type_active">&#9825;</p>
+            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img"></p>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
           <div class="element__title">
             <p class="element__text">Гора Эльбрус</p>
-            <p class="element__like element__like_type_active">&#9825;</p>
+            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img"></p>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
           <div class="element__title">
             <p class="element__text">Домбай</p>
-            <p class="element__like element__like_type_active">&#9825;</p>
+            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img"></p>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
           <div class="element__title">
             <p class="element__text">Гора Эльбрус</p>
-            <p class="element__like element__like_type_active">&#9825;</p>
+            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img"></p>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
           <div class="element__title">
             <p class="element__text">Домбай</p>
-            <p class="element__like element__like_type_active">&#9825;</p>
+            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img"></p>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
           <div class="element__title">
             <p class="element__text">Карачаево-Черкессия</p>
-            <p class="element__like element__like_type_active">&#9825;</p>
+            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img"></p>
           </div>
         </div>
       </section>
@@ -76,7 +76,7 @@
     </footer>
     <section class="popup popup_closed">
       <div class="editform">
-        <button class="editform__closebutton"></button>
+        <button type="button" class="editform__closebutton"></button>
         <h3 class="editform__title">Редактировать профиль</h3>
         <input type="text" placeholder="Введите имя" class="editform__input editform__input_type_title">
         <input type="text" placeholder="Введите занятие" class="editform__input editform__input_type_subtitle">
