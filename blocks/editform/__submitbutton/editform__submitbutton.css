@@ -3,6 +3,7 @@
     height: 50px;
     margin-left: 36px;
     margin-top: 48px;
+    margin-bottom: 37px;
     border: none;
     background-color: black;
     color: white;
@@ -21,7 +22,10 @@
     .editform__submitbutton {
         margin-top: 45px;
         margin-left: 22px;
+        margin-bottom: 25px;
         width: 238px;
         height: 46px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }

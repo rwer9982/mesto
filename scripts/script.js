@@ -5,17 +5,18 @@ let name = document.querySelector(".profile__title");
 let job = document.querySelector(".profile__subtitle");
 let nameInput = document.querySelector(".editform__input_type_title");
 let jobInput = document.querySelector(".editform__input_type_subtitle");
-const formElement = document.querySelector(".editform__submitbutton")
+let formElement = document.querySelector(".editform");
 
-function ShowEditForm() {
-    popup.classList.remove("popup_closed");
+function showEditForm() {
+    popup.classList.remove("popup_opened");
+    defaultFillForm();
 };
 
-function HideEditForm() {
-    popup.classList.add("popup_closed");
+function hideEditForm() {
+    popup.classList.add("popup_opened");
 };
 
-function DefaultFillForm () {
+function defaultFillForm () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
 }
@@ -24,10 +25,9 @@ function formSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
-    HideEditForm();
+    hideEditForm();
 };
 
-DefaultFillForm();
-editformButton.addEventListener("click", ShowEditForm);
-editformCloseButton.addEventListener("click", HideEditForm);
-formElement.addEventListener("click", formSubmitHandler);
+editformButton.addEventListener("click", showEditForm);
+editformCloseButton.addEventListener("click", hideEditForm);
+formElement.addEventListener("submit", formSubmitHandler);

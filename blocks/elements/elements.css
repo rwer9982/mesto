@@ -16,3 +16,9 @@
         padding-top: 30px;
     }
 }
+
+@media screen and (max-width: 950px) {
+    .elements {
+        max-width: 90%;
+    }
+}

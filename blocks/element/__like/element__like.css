@@ -3,6 +3,8 @@
     padding: 0;
     margin-left: auto;
     display: block;
+    border: none;
+    background-color: white;
 }
 
 .element__like:hover {

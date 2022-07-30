@@ -11,8 +11,7 @@
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="images/logo.png" alt="логотип_заголовка">
-      <div class="header__line"></div>
+      <img class="header__logo" src="images/logo.svg" alt="логотип_заголовка">
     </header>
     <main class="main">
       <section class="profile">
@@ -30,43 +29,43 @@
         <div class="element">
           <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
           <div class="element__title">
-            <p class="element__text">Карачаевск</p>
-            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></p>
+            <h3 class="element__text">Карачаевск</h3>
+            <button type="button" class="element__like element__like_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
           <div class="element__title">
-            <p class="element__text">Гора Эльбрус</p>
-            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></p>
+            <h3 class="element__text">Гора Эльбрус</h3>
+            <button type="button" class="element__like element__like_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
           <div class="element__title">
-            <p class="element__text">Домбай</p>
-            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></p>
+            <h3 class="element__text">Домбай</h3>
+            <button type="button" class="element__like element__like_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
           <div class="element__title">
-            <p class="element__text">Гора Эльбрус</p>
-            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></p>
+            <h3 class="element__text">Гора Эльбрус</h3>
+            <button type="button" class="element__like element__like_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
           <div class="element__title">
-            <p class="element__text">Домбай</p>
-            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></p>
+            <h3 class="element__text">Домбай</h3>
+            <button type="button" class="element__like element__like_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
           <div class="element__title">
-            <p class="element__text">Карачаево-Черкессия</p>
-            <p class="element__like element__like_type_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></p>
+            <h3 class="element__text">Карачаево-Черкессия</h3>
+            <button type="button" class="element__like element__like_active"><img src="./images/like.png" class="element__like-img" alt="картинка_лайк"></button>
           </div>
         </div>
       </section>
@@ -74,15 +73,15 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Евгений Макин</p>
     </footer>
-    <section class="popup popup_closed">
-      <div class="editform">
+    <div class="popup popup_opened">
+      <form class="editform" name="jobandname">
         <button type="button" class="editform__closebutton"></button>
         <h3 class="editform__title">Редактировать профиль</h3>
-        <input type="text" placeholder="Введите имя" class="editform__input editform__input_type_title">
-        <input type="text" placeholder="Введите занятие" class="editform__input editform__input_type_subtitle">
+        <input type="text" name="job" placeholder="Введите имя" class="editform__input editform__input_type_title">
+        <input type="text" name="name" placeholder="Введите занятие" class="editform__input editform__input_type_subtitle">
         <button type="submit" class="editform__submitbutton">Сохранить</button>
-      </div>
-    </section>
+      </form>
+    </div>
   </div>
   <script src="./scripts/script.js"></script>
 </body>
