@@ -7,19 +7,19 @@ let nameInput = document.querySelector(".editform__input_type_title");
 let jobInput = document.querySelector(".editform__input_type_subtitle");
 let formElement = document.querySelector(".editform");
 
-function showEditForm() {
-    popup.classList.remove("popup_opened");
-    defaultFillForm();
-};
-
-function hideEditForm() {
-    popup.classList.add("popup_opened");
-};
-
 function defaultFillForm () {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
 }
+
+function showEditForm() {
+    popup.classList.add("popup_opened");
+    defaultFillForm();
+};
+
+function hideEditForm() {
+    popup.classList.remove("popup_opened");
+};
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
