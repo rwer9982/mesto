@@ -1,0 +1,25 @@
+.increased-image__closebutton {
+    margin-top: -15%;
+    margin-left: 102%;
+    width: 32px;
+    height: 32px;
+    border: none;
+    object-fit: cover;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(../../../images/CloseIcon.png);
+}
+
+.increased-image__closebutton:hover {
+    cursor: pointer;
+    opacity: 60%;
+}
+
+@media screen and (max-width: 597px) {
+    .increased-image__closebutton {
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        margin-left: auto;
+        margin-top: -35px;
+    }
+}

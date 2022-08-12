@@ -1,4 +1,4 @@
-.element__like {
+.element__like_active {
     margin: 0;
     padding: 0;
     margin-left: auto;
@@ -7,10 +7,10 @@
     background-color: white;
     width: 22px;
     height: 19px;
-    background-image: url(./../../../images/like.png);
+    background-image: url(./../../../../images/like_active.png);
 }
 
-.element__like:hover {
+.element__like_active:hover {
     opacity: 50%;
     cursor: pointer;
 }

@@ -28,71 +28,59 @@
             alt="Картинка_плюс"></button>
       </section>
       <section class="elements">
-        <div class="element">
-          <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
-          <div class="element__title">
-            <h2 class="element__text">Карачаевск</h2>
-            <button type="button" class="element__like"><img src="./images/like.png" class="element__like-img"
-                alt="картинка_лайк"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
-          <div class="element__title">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button type="button" class="element__like"><img src="./images/like.png" class="element__like-img"
-                alt="картинка_лайк"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
-          <div class="element__title">
-            <h2 class="element__text">Домбай</h2>
-            <button type="button" class="element__like"><img src="./images/like.png" class="element__like-img"
-                alt="картинка_лайк"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/elbrus.jpg" alt="Фото_Эльбрус">
-          <div class="element__title">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button type="button" class="element__like"><img src="./images/like.png" class="element__like-img"
-                alt="картинка_лайк"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/dombay.jpg" alt="Фото_Домбай">
-          <div class="element__title">
-            <h2 class="element__text">Домбай</h2>
-            <button type="button" class="element__like"><img src="./images/like.png" class="element__like-img"
-                alt="картинка_лайк"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/karachaevsk.jpg" alt="Фото_Карачаевск">
-          <div class="element__title">
-            <h2 class="element__text">Карачаево-Черкессия</h2>
-            <button type="button" class="element__like"><img src="./images/like.png" class="element__like-img"
-                alt="картинка_лайк"></button>
-          </div>
-        </div>
+
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Евгений Макин</p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="popup-editform">
       <div class="popup__form-container">
-        <form class="editform" name="jobandname">
-          <button type="button" class="editform__closebutton"></button>
+        <form class="editform" id="editform" name="jobandname">
+          <button type="button" class="editform__closebutton" id="editform-closebutton"></button>
           <h3 class="editform__title">Редактировать профиль</h3>
-          <input type="text" name="job" placeholder="Введите имя" class="editform__input editform__input_type_title">
-          <input type="text" name="name" placeholder="Введите занятие"
+          <input type="text" name="job" placeholder="Введите имя" id="editform-title"
+            class="editform__input editform__input_type_title">
+          <input type="text" name="name" id="editform-subtitle" placeholder="Введите занятие"
             class="editform__input editform__input_type_subtitle">
           <button type="submit" class="editform__submitbutton">Сохранить</button>
         </form>
       </div>
     </div>
+
+    <div class="popup" id="popup-newitemform">
+      <div class="popup__form-container">
+        <form class="editform" name="itemchanger" id="additemform">
+          <button type="button" class="editform__closebutton" id="newitemform-closebutton"></button>
+          <h3 class="editform__title">Новое место</h3>
+          <input type="text" name="placename" id="addcardtext" placeholder="Название"
+            class="editform__input editform__input_type_title">
+          <input type="text" name="placelink" id="addcardimage" placeholder="Ссылка на картинку"
+            class="editform__input editform__input_type_subtitle">
+          <button type="submit" class="editform__submitbutton">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <template class="element-template">
+      <div class="element">
+        <button type="button" class="element__trash-button"></button>
+        <img class="element__image" alt="Фото_места" id="element-image">
+        <div class="element__title">
+          <h2 class="element__text"></h2>
+          <button type="button" class="element__like" id="likebutton"></button>
+        </div>
+      </div>
+    </template>
+
+    <div class="popup-image" id="popup-image">
+      <div class="increased-image">
+        <button type="button" class="increased-image__closebutton" id="increased-image-closebutton"></button>
+        <img class="increased-image__image" alt="Фото_места">
+        <h4 class="increased-image__title"></h4>
+      </div>
+    </div>
+
   </div>
   <script src="./scripts/script.js"></script>
 </body>
