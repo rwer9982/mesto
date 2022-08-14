@@ -1,4 +1,4 @@
-.editform__input {
+.edit-form__input {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -11,22 +11,22 @@
 }
 
 @media screen and (max-width: 597px) {
-    .editform__input {
+    .edit-form__input {
         margin-left: 22px;
         width: 238px;
     }
 }
 
-.editform__input:first-of-type {
+.edit-form__input:first-of-type {
     margin-top: 54px;
 }
 
-.editform__input:last-of-type {
+.edit-form__input:last-of-type {
     margin-top: 30px;
 }
 
 @media screen and (max-width: 597px) {
-    .editform__input:first-of-type {
+    .edit-form__input:first-of-type {
         margin-top: 70px;
     }
 }

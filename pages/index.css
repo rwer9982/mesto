@@ -29,11 +29,11 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__form-container/popup__form-container.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
-@import url(../blocks/editform/editform.css);
-@import url(../blocks/editform/__closebutton/editform__closebutton.css);
-@import url(../blocks/editform/__title/editform__title.css);
-@import url(../blocks/editform/__input/editform__input.css);
-@import url(../blocks/editform/__submitbutton/editform__submitbutton.css);
+@import url(../blocks/edit-form/edit-form.css);
+@import url(../blocks/edit-form/__closebutton/edit-form__closebutton.css);
+@import url(../blocks/edit-form/__title/edit-form__title.css);
+@import url(../blocks/edit-form/__input/edit-form__input.css);
+@import url(../blocks/edit-form/__submitbutton/edit-form__submitbutton.css);
 @import url(../blocks/increased-image/increased-image.css);
 @import url(../blocks/increased-image/increased-image__closebutton/increased-image__closebutton.css);
 @import url(../blocks/increased-image/increased-image__image/increased-image__image.css);

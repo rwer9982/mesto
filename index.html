@@ -36,28 +36,28 @@
     </footer>
     <div class="popup" id="popup-editform">
       <div class="popup__form-container">
-        <form class="editform" id="editform" name="jobandname">
-          <button type="button" class="editform__closebutton" id="editform-closebutton"></button>
-          <h3 class="editform__title">Редактировать профиль</h3>
+        <form class="edit-form" id="editform" name="jobandname">
+          <button type="button" class="edit-form__closebutton" id="editform-closebutton"></button>
+          <h3 class="edit-form__title">Редактировать профиль</h3>
           <input type="text" name="job" placeholder="Введите имя" id="editform-title"
-            class="editform__input editform__input_type_title">
+            class="edit-form__input">
           <input type="text" name="name" id="editform-subtitle" placeholder="Введите занятие"
-            class="editform__input editform__input_type_subtitle">
-          <button type="submit" class="editform__submitbutton">Сохранить</button>
+            class="edit-form__input">
+          <button type="submit" class="edit-form__submitbutton">Сохранить</button>
         </form>
       </div>
     </div>
 
     <div class="popup" id="popup-newitemform">
       <div class="popup__form-container">
-        <form class="editform" name="itemchanger" id="additemform">
-          <button type="button" class="editform__closebutton" id="newitemform-closebutton"></button>
-          <h3 class="editform__title">Новое место</h3>
+        <form class="edit-form" name="itemchanger" id="additemform">
+          <button type="button" class="edit-form__closebutton" id="newitemform-closebutton"></button>
+          <h3 class="edit-form__title">Новое место</h3>
           <input type="text" name="placename" id="addcardtext" placeholder="Название"
-            class="editform__input editform__input_type_title">
-          <input type="text" name="placelink" id="addcardimage" placeholder="Ссылка на картинку"
-            class="editform__input editform__input_type_subtitle">
-          <button type="submit" class="editform__submitbutton">Создать</button>
+            class="edit-form__input">
+          <input type="url" name="placelink" id="addcardimage" placeholder="Ссылка на картинку"
+            class="edit-form__input">
+          <button type="submit" class="edit-form__submitbutton">Создать</button>
         </form>
       </div>
     </div>

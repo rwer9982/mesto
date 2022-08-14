@@ -1,4 +1,4 @@
-.editform {
+.edit-form {
     width: 430px;
     background-color: white;
     color: black;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 597px) {
-    .editform {
+    .edit-form {
         width: 282px;
     }
 }

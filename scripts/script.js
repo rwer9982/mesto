@@ -3,27 +3,27 @@
 const editformButton = document.querySelector(".profile__editbutton");
 const popupEdit = document.querySelector("#popup-editform");
 const editformCloseButton = document.querySelector("#editform-closebutton");
-let name = document.querySelector(".profile__title");
-let job = document.querySelector(".profile__subtitle");
+const name = document.querySelector(".profile__title");
+const job = document.querySelector(".profile__subtitle");
 let nameInput = document.querySelector("#editform-title");
 let jobInput = document.querySelector("#editform-subtitle");
-let formElement = document.querySelector("#editform");
+const formElement = document.querySelector("#editform");
 
-function defaultFillForm() {
+function fillEditFormFields() {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
 }
 
 function showEditForm() {
     popupEdit.classList.add("popup_opened");
-    defaultFillForm();
+    fillEditFormFields();
 };
 
 function hideEditForm() {
     popupEdit.classList.remove("popup_opened");
 };
 
-function formSubmitHandler(evt) {
+function EditfFormSubmitHandler(evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
@@ -32,16 +32,16 @@ function formSubmitHandler(evt) {
 
 editformButton.addEventListener("click", showEditForm);
 editformCloseButton.addEventListener("click", hideEditForm);
-formElement.addEventListener("submit", formSubmitHandler);
+formElement.addEventListener("submit", EditfFormSubmitHandler);
 
 ///ПР5
 
 const popupNewItem = document.querySelector("#popup-newitemform");
-const newItemButton = document.querySelector(".profile__addbutton");
-const newItemFormCloseButton = document.querySelector("#newitemform-closebutton");
-let formElementAddItem = document.querySelector("#additemform");
-let imageAdder = document.querySelector("#addcardimage");
-let textAdder = document.querySelector("#addcardtext");
+const addNewItemButton = document.querySelector(".profile__addbutton");
+const newItemPopupCloseButton = document.querySelector("#newitemform-closebutton");
+const formElementAddItem = document.querySelector("#additemform");
+const newItemImageInput = document.querySelector("#addcardimage");
+const newItemNameInput = document.querySelector("#addcardtext");
 
 
 const elementsList = document.querySelector('.elements');
@@ -76,35 +76,52 @@ const initialCards = [
 
 //Открытие и закрытие форм
 
-function showNewItemForm() {
+function openPopup() {
     popupNewItem.classList.add("popup_opened");
 };
 
-function hideNewItemForm() {
+function closePopup() {
     popupNewItem.classList.remove("popup_opened");
 };
 
 
 function formAddItemHandler(evt) {
     evt.preventDefault();
-    hideNewItemForm();
+    closePopup();
 };
 
-newItemButton.addEventListener("click", showNewItemForm);
-newItemFormCloseButton.addEventListener("click", hideNewItemForm);
+addNewItemButton.addEventListener("click", openPopup);
+newItemPopupCloseButton.addEventListener("click", closePopup);
 formElementAddItem.addEventListener("submit", formAddItemHandler);
+
+//закрытие большой картинки
+
+const increasedImagePopup = document.querySelector('#popup-image');
+const increasedImageCloseButton = document.querySelector('#increased-image-closebutton');
+
+function hideIncreasedImage() {
+    increasedImagePopup.classList.remove('popup_opened');
+};
+
+increasedImageCloseButton.addEventListener("click", hideIncreasedImage);
 
 ///Добавление и удаление карт
 
-function cardEditor(item) {
+function createCard(item) {
     const elementItem = elementTemplate.cloneNode(true);
     const trashButton = elementItem.querySelector('.element__trash-button');
+    const likeButton = elementItem.querySelector('.element__like');
 
     elementItem.querySelector('.element__text').textContent = item.name;
     elementItem.querySelector('.element__image').src = item.link;
-    const likeButton = elementItem.querySelector('.element__like');
 
-    elementsList.append(elementItem);
+
+
+    function addCard() {
+        elementsList.prepend(elementItem);
+    }
+    addCard();
+
 
 
     //Удаление картинки
@@ -117,49 +134,54 @@ function cardEditor(item) {
         likeButton.classList.toggle('element__like_active');
     });
     //Увеличение картинки
-    const chosenImage = elementItem.querySelector('#element-image');
-    const increasedImage = document.querySelector('#popup-image');
-    const increasedImageCloseButton = document.querySelector('#increased-image-closebutton');
+    const bimImage = elementItem.querySelector('#element-image');
+    
+    
 
-
+    //добавление и удаление классов 'popup_opened' передаются разным константам, поэтому необходимо использовать разные функции
     function showIncreasedImage() {
-        increasedImage.classList.add('popup_opened');
+        increasedImagePopup.classList.add('popup_opened');
     }
 
-    function hideIncreasedImage() {
-        increasedImage.classList.remove('popup_opened');
-    }
+    
 
-    chosenImage.addEventListener("click", showIncreasedImage);
+    bimImage.addEventListener("click", showIncreasedImage);
 
+    const elementTextFill = document.querySelector('.increased-image__title');
+    const elementImageFill = document.querySelector('.increased-image__image');
 
-
-    chosenImage.addEventListener("click", function () {
-
-        const elementTextFill = document.querySelector('.increased-image__title');
-        const elementImageFill = document.querySelector('.increased-image__image');
+    bimImage.addEventListener("click", function () {
 
         elementTextFill.textContent = item.name;
         elementImageFill.src = item.link;
 
     });
-    increasedImageCloseButton.addEventListener("click", hideIncreasedImage);
+
 };
 
+
+
 function createInitialCards() {
-    initialCards.forEach(cardEditor)
+    initialCards.forEach(createCard)
 };
+
 
 createInitialCards();
 
-//Добавление епрточки кнопкой
+
+
+
+//Добавление карточки кнопкой
 
 formElementAddItem.addEventListener('submit', function (item) {
     const elementItem = elementTemplate.cloneNode(true);
 
-    elementItem.querySelector('.element__text').textContent = textAdder.value;
-    elementItem.querySelector('.element__image').src = imageAdder.value;
+    elementItem.querySelector('.element__text').textContent = newItemNameInput.value;
+    elementItem.querySelector('.element__image').src = newItemImageInput.value;
 
-    elementsList.prepend(elementItem);
+    function addCard() {
+        elementsList.prepend(elementItem);
+    }
+    addCard();
 
 });
