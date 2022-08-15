@@ -19,12 +19,12 @@
         <div class="profile__info">
           <div class="profile__row">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__editbutton"><img src="./images/pen.png" class="profile__img-pen"
+            <button type="button" class="profile__edit-button"><img src="./images/pen.png" class="profile__img-pen"
                 alt="Иконка_ручка"></button>
           </div>
           <h2 class="profile__subtitle">Исследователь океана</h2>
         </div>
-        <button type="button" class="profile__addbutton"><img src="./images/Vector.png" class="profile__vector"
+        <button type="button" class="profile__add-button"><img src="./images/Vector.png" class="profile__vector"
             alt="Картинка_плюс"></button>
       </section>
       <section class="elements">
@@ -34,30 +34,30 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Евгений Макин</p>
     </footer>
-    <div class="popup" id="popup-editform">
+    <div class="popup" id="popup-edit-form">
       <div class="popup__form-container">
-        <form class="edit-form" id="editform" name="jobandname">
-          <button type="button" class="edit-form__closebutton" id="editform-closebutton"></button>
+        <form class="edit-form" id="edit-form" name="job-and-name">
+          <button type="button" class="edit-form__close-button" id="edit-form-close-button"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
-          <input type="text" name="job" placeholder="Введите имя" id="editform-title"
+          <input type="text" name="job" placeholder="Введите имя" id="edit-form-title"
             class="edit-form__input">
-          <input type="text" name="name" id="editform-subtitle" placeholder="Введите занятие"
+          <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие"
             class="edit-form__input">
-          <button type="submit" class="edit-form__submitbutton">Сохранить</button>
+          <button type="submit" class="edit-form__submit-button">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup" id="popup-newitemform">
+    <div class="popup" id="popup-new-item-form">
       <div class="popup__form-container">
-        <form class="edit-form" name="itemchanger" id="additemform">
-          <button type="button" class="edit-form__closebutton" id="newitemform-closebutton"></button>
+        <form class="edit-form" name="item-changer" id="add-item-form">
+          <button type="button" class="edit-form__close-button" id="new-item-form-close-button"></button>
           <h3 class="edit-form__title">Новое место</h3>
-          <input type="text" name="placename" id="addcardtext" placeholder="Название"
+          <input type="text" name="place-name" id="add-card-text" placeholder="Название"
             class="edit-form__input">
-          <input type="url" name="placelink" id="addcardimage" placeholder="Ссылка на картинку"
+          <input type="url" name="place-link" id="add-card-image" placeholder="Ссылка на картинку"
             class="edit-form__input">
-          <button type="submit" class="edit-form__submitbutton">Создать</button>
+          <button type="submit" class="edit-form__submit-button">Создать</button>
         </form>
       </div>
     </div>
@@ -68,14 +68,14 @@
         <img class="element__image" alt="Фото_места" id="element-image">
         <div class="element__title">
           <h2 class="element__text"></h2>
-          <button type="button" class="element__like" id="likebutton"></button>
+          <button type="button" class="element__like" id="like-button"></button>
         </div>
       </div>
     </template>
 
     <div class="popup-image" id="popup-image">
       <div class="increased-image">
-        <button type="button" class="increased-image__closebutton" id="increased-image-closebutton"></button>
+        <button type="button" class="increased-image__close-button" id="increased-image-close-button"></button>
         <img class="increased-image__image" alt="Фото_места">
         <h4 class="increased-image__title"></h4>
       </div>

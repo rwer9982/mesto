@@ -1,4 +1,4 @@
-.edit-form__closebutton {
+.edit-form__close-button {
     margin: 0;
     width: 32px;
     height: 32px;
@@ -11,13 +11,13 @@
     margin-top: -40px;
 }
 
-.edit-form__closebutton:hover {
+.edit-form__close-button:hover {
     cursor: pointer;
     opacity: 60%;
 }
 
 @media screen and (max-width: 597px) {
-    .edit-form__closebutton {
+    .edit-form__close-button {
         width: 20px;
         height: 20px;
         background-size: cover;

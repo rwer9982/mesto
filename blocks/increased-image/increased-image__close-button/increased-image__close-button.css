@@ -1,4 +1,4 @@
-.increased-image__closebutton {
+.increased-image__close-button {
     margin-top: -15%;
     margin-left: 102%;
     width: 32px;
@@ -9,13 +9,13 @@
     background-image: url(../../../images/CloseIcon.png);
 }
 
-.increased-image__closebutton:hover {
+.increased-image__close-button:hover {
     cursor: pointer;
     opacity: 60%;
 }
 
 @media screen and (max-width: 597px) {
-    .increased-image__closebutton {
+    .increased-image__close-button {
         width: 20px;
         height: 20px;
         background-size: cover;
