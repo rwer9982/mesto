@@ -78,22 +78,30 @@ const initialCards = [
 //В функции openPopup и closePopup передается попап, который открывает и закрывает форму добавления карточки. Если сделать открытие через одну функцию, будет открываться сразу несколько попапов. В связи с этим для открытия разных попапов созданы разные функции.
 
 
-function openPopup() {
-    popupNewItem.classList.add("popup_opened");
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
 };
 
-function closePopup() {
-    popupNewItem.classList.remove("popup_opened");
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
 };
 
 
 function formAddItemHandler(evt) {
     evt.preventDefault();
-    closePopup();
+    const item = { name: newItemNameInput.value, link: newItemImageInput.value };
+    addCard(item);
+    closePopup(popupNewItem);
 };
 
-addNewItemButton.addEventListener("click", openPopup);
-newItemPopupCloseButton.addEventListener("click", closePopup);
+addNewItemButton.addEventListener("click", () => {
+    openPopup(popupNewItem);
+});
+
+newItemPopupCloseButton.addEventListener("click", () => {
+    closePopup(popupNewItem);
+});
+
 formElementAddItem.addEventListener("submit", formAddItemHandler);
 
 //закрытие большой картинки
@@ -102,11 +110,9 @@ formElementAddItem.addEventListener("submit", formAddItemHandler);
 const increasedImagePopup = document.querySelector('#popup-image');
 const increasedImageCloseButton = document.querySelector('#increased-image-close-button');
 
-function hideIncreasedImage() {
-    increasedImagePopup.classList.remove('popup_opened');
-};
-
-increasedImageCloseButton.addEventListener("click", hideIncreasedImage);
+increasedImageCloseButton.addEventListener("click", () => {
+    closePopup(increasedImagePopup);
+});
 
 ///Добавление и удаление карт
 
@@ -130,12 +136,6 @@ function createCard(item) {
     });
     //Увеличение картинки
     const bimImage = elementItem.querySelector('#element-image');
-
-    //добавление и удаление классов 'popup_opened' передаются разным константам, поэтому необходимо использовать разные функции
-    function showIncreasedImage() {
-        increasedImagePopup.classList.add('popup_opened');
-    }
-
     const elementTextFill = document.querySelector('.increased-image__title');
     const elementImageFill = document.querySelector('.increased-image__image');
 
@@ -143,7 +143,7 @@ function createCard(item) {
 
         elementTextFill.textContent = item.name;
         elementImageFill.src = item.link;
-        showIncreasedImage();
+        openPopup(increasedImagePopup);
     });
     return elementItem;
 };
@@ -157,13 +157,3 @@ function createInitialCards() {
 };
 
 createInitialCards();
-
-//Добавление карточки кнопкой
-
-formElementAddItem.addEventListener('submit', function (item) {
-    addCard(item);
-    
-    elementsList.querySelector('.element__text').textContent = newItemNameInput.value; 
-    elementsList.querySelector('.element__image').src = newItemImageInput.value;
-    
-});
