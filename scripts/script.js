@@ -14,24 +14,28 @@ function fillEditFormFields() {
     jobInput.value = job.textContent;
 }
 
-function showEditForm() {
-    popupEdit.classList.add("popup_opened");
-    fillEditFormFields();
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
 };
 
-function hideEditForm() {
-    popupEdit.classList.remove("popup_opened");
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
 };
 
 function editfFormSubmitHandler(evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
-    hideEditForm();
+    closePopup(popupEdit);
 };
 
-editformButton.addEventListener("click", showEditForm);
-editformCloseButton.addEventListener("click", hideEditForm);
+editformButton.addEventListener("click", () => {
+    openPopup(popupEdit);
+    fillEditFormFields();
+});
+editformCloseButton.addEventListener("click", () => {
+    closePopup(popupEdit);
+});
 editFormElement.addEventListener("submit", editfFormSubmitHandler);
 
 ///ПР5
@@ -75,17 +79,6 @@ const initialCards = [
 ];
 
 //Открытие и закрытие форм
-//В функции openPopup и closePopup передается попап, который открывает и закрывает форму добавления карточки. Если сделать открытие через одну функцию, будет открываться сразу несколько попапов. В связи с этим для открытия разных попапов созданы разные функции.
-
-
-function openPopup(popup) {
-    popup.classList.add("popup_opened");
-};
-
-function closePopup(popup) {
-    popup.classList.remove("popup_opened");
-};
-
 
 function formAddItemHandler(evt) {
     evt.preventDefault();
