@@ -38,3 +38,7 @@
 @import url(../blocks/increased-image/increased-image__close-button/increased-image__close-button.css);
 @import url(../blocks/increased-image/increased-image__image/increased-image__image.css);
 @import url(../blocks/increased-image/increased-image__title/increased-image__title.css);
+@import url(../blocks/edit-form/__submit-button/_disabled/edit-form__submit-button_disabled.css);
+@import url(../blocks/edit-form/__input/_with-error/edit-form__input_with-error.css);
+@import url(../blocks/edit-form/__span/edit-form__span.css);
+@import url(../blocks/edit-form/__span/_visible/edit-form__span_visible.css);

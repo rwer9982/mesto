@@ -36,13 +36,15 @@
     </footer>
     <div class="popup" id="popup-edit-form">
       <div class="popup__form-container">
-        <form class="edit-form" id="edit-form" name="job-and-name">
+        <form class="edit-form" id="edit-form" name="job-and-name" novalidate>
           <button type="button" class="edit-form__close-button" id="edit-form-close-button"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
-          <input type="text" name="job" placeholder="Введите имя" id="edit-form-title"
-            class="edit-form__input">
-          <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие"
-            class="edit-form__input">
+          <input type="text" name="job" placeholder="Введите имя" id="edit-form-title" class="edit-form__input"
+            minlength="2" maxlength="40" required>
+          <span class="edit-form__span"></span>
+          <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие" class="edit-form__input"
+            minlength="2" maxlength="200" required>
+          <span class="edit-form__span"></span>
           <button type="submit" class="edit-form__submit-button">Сохранить</button>
         </form>
       </div>
@@ -50,13 +52,15 @@
 
     <div class="popup" id="popup-new-item-form">
       <div class="popup__form-container">
-        <form class="edit-form" name="item-changer" id="add-item-form">
+        <form class="edit-form" name="item-changer" id="add-item-form" novalidate>
           <button type="button" class="edit-form__close-button" id="new-item-form-close-button"></button>
           <h3 class="edit-form__title">Новое место</h3>
-          <input type="text" name="place-name" id="add-card-text" placeholder="Название"
-            class="edit-form__input">
+          <input type="text" name="place-name" id="add-card-text" placeholder="Название" class="edit-form__input"
+            minlength="2" maxlength="30" required>
+          <span class="edit-form__span"></span>
           <input type="url" name="place-link" id="add-card-image" placeholder="Ссылка на картинку"
-            class="edit-form__input">
+            class="edit-form__input" required>
+          <span class="edit-form__span"></span>
           <button type="submit" class="edit-form__submit-button">Создать</button>
         </form>
       </div>
@@ -83,6 +87,7 @@
 
   </div>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
