@@ -155,14 +155,7 @@ createInitialCards();
 popupEdit.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
         closePopup(popupEdit);
-        
-    };
-});
 
-document.addEventListener('keydown', (evt) => {
-    evt.preventDefault;
-    if (evt.key === "Escape") {
-        closePopup(popupEdit);
     };
 });
 
@@ -170,13 +163,6 @@ increasedImagePopup.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
         closePopup(increasedImagePopup);
     }
-});
-
-document.addEventListener('keydown', (evt) => {
-    evt.preventDefault;
-    if (evt.key === "Escape") {
-        closePopup(increasedImagePopup);
-    };
 });
 
 popupNewItem.addEventListener('click', (event) => {
@@ -187,6 +173,12 @@ popupNewItem.addEventListener('click', (event) => {
 
 document.addEventListener('keydown', (evt) => {
     evt.preventDefault;
+    if (evt.key === "Escape") {
+        closePopup(popupEdit);
+    };
+    if (evt.key === "Escape") {
+        closePopup(increasedImagePopup);
+    };
     if (evt.key === "Escape") {
         closePopup(popupNewItem);
     };
