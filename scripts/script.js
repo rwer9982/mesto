@@ -150,3 +150,44 @@ function createInitialCards() {
 };
 
 createInitialCards();
+
+//закрытие попапа на оверлей и Esc
+popupEdit.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        closePopup(popupEdit);
+        
+    };
+});
+
+document.addEventListener('keydown', (evt) => {
+    evt.preventDefault;
+    if (evt.key === "Escape") {
+        closePopup(popupEdit);
+    };
+});
+
+increasedImagePopup.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        closePopup(increasedImagePopup);
+    }
+});
+
+document.addEventListener('keydown', (evt) => {
+    evt.preventDefault;
+    if (evt.key === "Escape") {
+        closePopup(increasedImagePopup);
+    };
+});
+
+popupNewItem.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        closePopup(popupNewItem);
+    }
+});
+
+document.addEventListener('keydown', (evt) => {
+    evt.preventDefault;
+    if (evt.key === "Escape") {
+        closePopup(popupNewItem);
+    };
+});
