@@ -9,6 +9,9 @@ const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
 const editFormElement = document.querySelector("#edit-form");
 
+const elementTextFill = document.querySelector('.increased-image__title');
+const elementImageFill = document.querySelector('.increased-image__image');
+
 function fillEditFormFields() {
     nameInput.value = name.textContent;
     jobInput.value = job.textContent;
@@ -22,7 +25,7 @@ function closePopup(popup) {
     popup.classList.remove("popup_opened");
 };
 
-function editfFormSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
@@ -36,7 +39,7 @@ editformButton.addEventListener("click", () => {
 editformCloseButton.addEventListener("click", () => {
     closePopup(popupEdit);
 });
-editFormElement.addEventListener("submit", editfFormSubmitHandler);
+editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 ///ПР5
 
@@ -46,6 +49,7 @@ const newItemPopupCloseButton = document.querySelector("#new-item-form-close-but
 const formElementAddItem = document.querySelector("#add-item-form");
 const newItemImageInput = document.querySelector("#add-card-image");
 const newItemNameInput = document.querySelector("#add-card-text");
+const newItemSubmitButton = document.querySelector("#new-item-form-submit-button");
 
 
 const elementsList = document.querySelector('.elements');
@@ -80,11 +84,16 @@ const initialCards = [
 
 //Открытие и закрытие форм
 
-function formAddItemHandler(evt) {
+function handleProfileFormAddItem(evt) {
     evt.preventDefault();
     const item = { name: newItemNameInput.value, link: newItemImageInput.value };
     addCard(item);
     closePopup(popupNewItem);
+
+    evt.target.reset();
+
+    newItemSubmitButton.setAttribute('disabled', 'disabled');
+    newItemSubmitButton.classList.add('edit-form__submit-button_disabled');
 };
 
 addNewItemButton.addEventListener("click", () => {
@@ -95,7 +104,7 @@ newItemPopupCloseButton.addEventListener("click", () => {
     closePopup(popupNewItem);
 });
 
-formElementAddItem.addEventListener("submit", formAddItemHandler);
+formElementAddItem.addEventListener("submit", handleProfileFormAddItem);
 
 //закрытие большой картинки
 
@@ -114,9 +123,11 @@ function createCard(item) {
     const elementItem = elementTemplate.cloneNode(true);
     const trashButton = elementItem.querySelector('.element__trash-button');
     const likeButton = elementItem.querySelector('.element__like');
+    const bimImage = elementItem.querySelector('#element-image');
 
     elementItem.querySelector('.element__text').textContent = item.name;
-    elementItem.querySelector('.element__image').src = item.link;
+    bimImage.src = item.link;
+    bimImage.alt = item.name;
 
     //Удаление картинки
     trashButton.addEventListener('click', function () {
@@ -128,14 +139,14 @@ function createCard(item) {
         likeButton.classList.toggle('element__like_active');
     });
     //Увеличение картинки
-    const bimImage = elementItem.querySelector('#element-image');
-    const elementTextFill = document.querySelector('.increased-image__title');
-    const elementImageFill = document.querySelector('.increased-image__image');
+
+
 
     bimImage.addEventListener("click", function () {
 
         elementTextFill.textContent = item.name;
         elementImageFill.src = item.link;
+        elementImageFill.alt = item.name;
         openPopup(increasedImagePopup);
     });
     return elementItem;
@@ -152,27 +163,26 @@ function createInitialCards() {
 createInitialCards();
 
 //закрытие попапа на оверлей и Esc
-popupEdit.addEventListener('click', (event) => {
+function closePopupWithOverlay(evt) {
     if (event.target === event.currentTarget) {
-        closePopup(popupEdit);
-
-    };
-});
-
-increasedImagePopup.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        closePopup(increasedImagePopup);
+        closePopup(evt);
     }
+}
+
+popupEdit.addEventListener('click', () => {
+    closePopupWithOverlay(popupEdit);
 });
 
-popupNewItem.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        closePopup(popupNewItem);
-    }
+increasedImagePopup.addEventListener('click', () => {
+    closePopupWithOverlay(increasedImagePopup);
 });
 
-document.addEventListener('keydown', (evt) => {
-    evt.preventDefault;
+popupNewItem.addEventListener('click', () => {
+    closePopupWithOverlay(popupNewItem);
+});
+//////////////
+function closeByEscape(evt) {
+    evt.preventDefault();
     if (evt.key === "Escape") {
         closePopup(popupEdit);
     };
@@ -182,4 +192,7 @@ document.addEventListener('keydown', (evt) => {
     if (evt.key === "Escape") {
         closePopup(popupNewItem);
     };
-});
+};
+
+document.addEventListener('keydown', closeByEscape);
+//////////
