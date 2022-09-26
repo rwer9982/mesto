@@ -1,4 +1,23 @@
-///ПР4
+
+import { Card } from "./card.js";
+import { FormValidator } from "./formValidator.js";
+
+
+const validationForm = {
+    formSelector: '.edit-form',
+    inputSelector: '.edit-form__input',
+    submitButtonSelector: '.edit-form__submit-button',
+    inactiveButtonClass: 'edit-form__submit-button_disabled',
+    inputErrorClass: 'edit-form__input_with-error',
+    errorClass: 'edit-form__span',
+}
+
+const todoItem = new Card();
+
+
+const formValidate = new FormValidator();
+formValidate.enableValidation(validationForm);
+console.dir(formValidate);
 
 const editformButton = document.querySelector(".profile__edit-button");
 const popupEdit = document.querySelector("#popup-edit-form");
@@ -9,8 +28,7 @@ const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
 const editFormElement = document.querySelector("#edit-form");
 
-const elementTextFill = document.querySelector('.increased-image__title');
-const elementImageFill = document.querySelector('.increased-image__image');
+
 
 function fillEditFormFields() {
     nameInput.value = name.textContent;
@@ -43,7 +61,7 @@ editformCloseButton.addEventListener("click", () => {
 });
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
 
-///ПР5
+///
 
 const popupNewItem = document.querySelector("#popup-new-item-form");
 const addNewItemButton = document.querySelector(".profile__add-button");
@@ -55,7 +73,7 @@ const newItemSubmitButton = document.querySelector("#new-item-form-submit-button
 
 
 const elementsList = document.querySelector('.elements');
-const elementTemplate = document.querySelector('.element-template').content.querySelector(".element");
+
 
 const initialCards = [
     {
@@ -118,51 +136,10 @@ increasedImageCloseButton.addEventListener("click", () => {
     closePopup(increasedImagePopup);
 });
 
-///Добавление и удаление карт
 
 
-function createCard(item) {
-    const elementItem = elementTemplate.cloneNode(true);
-    const trashButton = elementItem.querySelector('.element__trash-button');
-    const likeButton = elementItem.querySelector('.element__like');
-    const bimImage = elementItem.querySelector('#element-image');
+//тут была функция
 
-    elementItem.querySelector('.element__text').textContent = item.name;
-    bimImage.src = item.link;
-    bimImage.alt = item.name;
-
-    //Удаление картинки
-    trashButton.addEventListener('click', function () {
-        elementItem.remove();
-    });
-
-    //Лайк
-    likeButton.addEventListener("click", function () {
-        likeButton.classList.toggle('element__like_active');
-    });
-    //Увеличение картинки
-
-
-
-    bimImage.addEventListener("click", function () {
-
-        elementTextFill.textContent = item.name;
-        elementImageFill.src = item.link;
-        elementImageFill.alt = item.name;
-        openPopup(increasedImagePopup);
-    });
-    return elementItem;
-};
-
-function addCard(item) {
-    elementsList.prepend(createCard(item));
-}
-
-function createInitialCards() {
-    initialCards.forEach(addCard)
-};
-
-createInitialCards();
 
 //закрытие попапа на оверлей и Esc
 function closePopupWithOverlay(event) {
@@ -185,3 +162,15 @@ function closeByEscape(evt) {
         closePopup(openedPopup);
     }
 }
+
+
+
+function addCard(item) {
+    elementsList.prepend(todoItem.createCard(item));
+}
+
+function createInitialCards() {
+    initialCards.forEach(addCard)
+};
+
+createInitialCards();

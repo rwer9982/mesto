@@ -54,7 +54,7 @@ function enableValidation(validationConfig) {
 }
 
 enableValidation(validationForm);
-// функции для активной/неактивной кнопок
+
 function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
