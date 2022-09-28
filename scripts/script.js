@@ -1,6 +1,6 @@
 
-import { Card } from "./card.js";
-import { FormValidator } from "./formValidator.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 
 const validationForm = {
@@ -17,17 +17,17 @@ const validationForm = {
 
 
 
-const editformButton = document.querySelector(".profile__edit-button");
+const editFormButton = document.querySelector(".profile__edit-button");
 const popupEdit = document.querySelector("#popup-edit-form");
-const editformCloseButton = document.querySelector("#edit-form-close-button");
+const editFormCloseButton = document.querySelector("#edit-form-close-button");
 const name = document.querySelector(".profile__title");
 const job = document.querySelector(".profile__subtitle");
 const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
 const editFormElement = document.querySelector("#edit-form");
 
-const editFormValidate = new FormValidator(validationForm, popupEdit);
-editFormValidate.enableValidation();
+const editFormValidator = new FormValidator(validationForm, popupEdit);
+editFormValidator.enableValidation();
 
 function fillEditFormFields() {
     nameInput.value = name.textContent;
@@ -51,11 +51,11 @@ function handleProfileFormSubmit(evt) {
     closePopup(popupEdit);
 };
 
-editformButton.addEventListener("click", () => {
+editFormButton.addEventListener("click", () => {
     openPopup(popupEdit);
     fillEditFormFields();
 });
-editformCloseButton.addEventListener("click", () => {
+editFormCloseButton.addEventListener("click", () => {
     closePopup(popupEdit);
 });
 editFormElement.addEventListener("submit", handleProfileFormSubmit);
@@ -70,10 +70,10 @@ const newItemImageInput = document.querySelector("#add-card-image");
 const newItemNameInput = document.querySelector("#add-card-text");
 const newItemSubmitButton = document.querySelector("#new-item-form-submit-button");
 
-const addItemFormValidate = new FormValidator(validationForm, formElementAddItem);
-addItemFormValidate.enableValidation();
+const addItemFormValidator = new FormValidator(validationForm, formElementAddItem);
+addItemFormValidator.enableValidation();
 
-const elementsList = document.querySelector('.elements');
+const cardsList = document.querySelector('.elements');
 
 
 const initialCards = [
@@ -105,22 +105,16 @@ const initialCards = [
 
 //Открытие и закрытие форм
 
-
-function handleProfileFormAddItem(evt) {
+function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    const item = { name: newItemNameInput.value, link: newItemImageInput.value };
-    function addCard() {
-        const card = new Card(item, '.element-template');
-        elementsList.prepend(card.generateCard());
-    }
-    addCard(item);
+    const cardNewItem = { name: newItemNameInput.value, link: newItemImageInput.value };
+
+    addCard(cardNewItem);
     closePopup(popupNewItem);
-
     evt.target.reset();
-
-    newItemSubmitButton.setAttribute('disabled', 'disabled');
-    newItemSubmitButton.classList.add('edit-form__submit-button_disabled');
+    addItemFormValidator.resetForm();
 };
+
 
 addNewItemButton.addEventListener("click", () => {
     openPopup(popupNewItem);
@@ -130,7 +124,7 @@ newItemPopupCloseButton.addEventListener("click", () => {
     closePopup(popupNewItem);
 });
 
-formElementAddItem.addEventListener("submit", handleProfileFormAddItem);
+formElementAddItem.addEventListener("submit", handleCardFormSubmit);
 
 //закрытие большой картинки
 
@@ -146,6 +140,13 @@ increasedImageCloseButton.addEventListener("click", () => {
 
 //тут была функция
 
+//открытие большой картинки
+export function handleOpenImagePopup() {
+    document.querySelector('.increased-image__title').textContent = document.querySelector('.element__title').textContent;
+    document.querySelector('.increased-image__image').src = document.querySelector('#element-image').src;
+    document.querySelector('.increased-image__image').alt = document.querySelector('#element-image').alt;
+    document.querySelector('.popup-image').classList.add('popup_opened');
+}
 
 //закрытие попапа на оверлей и Esc
 function closePopupWithOverlay(event) {
@@ -171,9 +172,13 @@ function closeByEscape(evt) {
 
 
 
-initialCards.forEach((item) => {
-    const card = new Card(item, '.element-template');
+function addCard(cardItem) {
+    const card = new Card(cardItem, '.element-template');
     const cardElement = card.generateCard();
+    
+    cardsList.prepend(cardElement);
+}
 
-    document.querySelector('.elements').append(cardElement);
+initialCards.forEach((cardItem) => {
+    addCard(cardItem)
 });
