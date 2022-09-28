@@ -1,67 +1,41 @@
 export class Card {
+    constructor(data, templateSelector) {
+        this._name = data.name;
+        this._link = data.link;
+        this._templateSelector = templateSelector;
+    }
 
-    static _template = document.querySelector('.element-template').content;
+    _getTemplate() {
+        const cardElement = document.querySelector(this._templateSelector).content.querySelector('.element').cloneNode(true);
+        return cardElement;
+    }
 
+    generateCard() {
+        this._element = this._getTemplate();
+        this._setEventListeners();
 
+        this._element.querySelector('#element-image').src = this._link;
+        this._element.querySelector('.element__text').textContent = this._name;
 
-    createCard(item) {
-        this._view = Card._template.querySelector(".element").cloneNode(true);
-        const trashButton = this._view.querySelector('.element__trash-button');
-        const likeButton = this._view.querySelector('.element__like');
-        this._bigImage = this._view.querySelector('#element-image');
+        return this._element;
+    }
 
-
-
-        this._view.querySelector('.element__text').textContent = item.name;
-        this._bigImage.src = item.link;
-        this._bigImage.alt = item.name;
-
-        //Удаление картинки
-        trashButton.addEventListener('click', this._handleClickDeleteCard);
-
-        //Лайк
-        likeButton.addEventListener("click", function () {
-            likeButton.classList.toggle('element__like_active');
+    _setEventListeners() {
+        this._element.querySelector('.element__like').addEventListener('click', this._toggleLikeButton);
+        this._element.querySelector('.element__trash-button').addEventListener('click', () => {
+            this._element.remove();
         });
-        //Увеличение картинки
+        this._element.querySelector('.element__image').addEventListener('click', this._handleOpenPopup);
+    }
+    _toggleLikeButton(evt) {
+        evt.target.classList.toggle('element__like_active');
+    }
 
-
-
-        this._bigImage.addEventListener("click", () => {
-
-
-            document.querySelector('.increased-image__title').textContent = item.name;
-            document.querySelector('.increased-image__image').src = item.link;
-            document.querySelector('.increased-image__image').alt = item.link;
-            const increasedImagePopup = document.querySelector('#popup-image');
-
-            function openPopup(popup) {
-                popup.classList.add("popup_opened");
-                document.addEventListener('keydown', closeByEscape);
-            };
-
-            function closeByEscape(evt) {
-                if (evt.key === 'Escape') {
-                    const openedPopup = document.querySelector('.popup_opened');
-                    closePopup(openedPopup);
-                }
-            }
-
-            function closePopup(popup) {
-                popup.classList.remove("popup_opened");
-                document.removeEventListener('keydown', closeByEscape);
-            };
-
-
-
-            openPopup(increasedImagePopup);
-        });
-
-        return this._view;
-    };
-
-    _handleClickDeleteCard = () => {
-        this._view.remove();
+    _handleOpenPopup() {
+        document.querySelector('.increased-image__title').textContent = this._name;
+        document.querySelector('.increased-image__image').src = this._link;
+        document.querySelector('.increased-image__image').alt = this._name;
+        document.querySelector('.popup-image').classList.add('popup_opened');
     }
 
 }

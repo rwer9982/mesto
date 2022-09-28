@@ -12,12 +12,10 @@ const validationForm = {
     errorClass: 'edit-form__span',
 }
 
-const todoItem = new Card();
 
 
-const formValidate = new FormValidator();
-formValidate.enableValidation(validationForm);
-console.dir(formValidate);
+
+
 
 const editformButton = document.querySelector(".profile__edit-button");
 const popupEdit = document.querySelector("#popup-edit-form");
@@ -28,7 +26,8 @@ const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
 const editFormElement = document.querySelector("#edit-form");
 
-
+const editFormValidate = new FormValidator(validationForm, popupEdit);
+editFormValidate.enableValidation();
 
 function fillEditFormFields() {
     nameInput.value = name.textContent;
@@ -71,6 +70,8 @@ const newItemImageInput = document.querySelector("#add-card-image");
 const newItemNameInput = document.querySelector("#add-card-text");
 const newItemSubmitButton = document.querySelector("#new-item-form-submit-button");
 
+const addItemFormValidate = new FormValidator(validationForm, formElementAddItem);
+addItemFormValidate.enableValidation();
 
 const elementsList = document.querySelector('.elements');
 
@@ -104,9 +105,14 @@ const initialCards = [
 
 //Открытие и закрытие форм
 
+
 function handleProfileFormAddItem(evt) {
     evt.preventDefault();
     const item = { name: newItemNameInput.value, link: newItemImageInput.value };
+    function addCard() {
+        const card = new Card(item, '.element-template');
+        elementsList.prepend(card.generateCard());
+    }
     addCard(item);
     closePopup(popupNewItem);
 
@@ -153,9 +159,9 @@ popupEdit.addEventListener('click', closePopupWithOverlay);
 increasedImagePopup.addEventListener('click', closePopupWithOverlay);
 
 popupNewItem.addEventListener('click', closePopupWithOverlay);
-//////////////
 
-//////////
+
+
 function closeByEscape(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.popup_opened');
@@ -165,12 +171,9 @@ function closeByEscape(evt) {
 
 
 
-function addCard(item) {
-    elementsList.prepend(todoItem.createCard(item));
-}
+initialCards.forEach((item) => {
+    const card = new Card(item, '.element-template');
+    const cardElement = card.generateCard();
 
-function createInitialCards() {
-    initialCards.forEach(addCard)
-};
-
-createInitialCards();
+    document.querySelector('.elements').append(cardElement);
+});
