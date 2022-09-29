@@ -1,0 +1,20 @@
+.edit-form__span {
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 36px;
+    width: 358px;
+    height: fit-content;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+    color: red;
+    visibility: visible;
+}
+
+@media screen and (max-width: 597px) {
+    .edit-form__span {
+        margin-left: 22px;
+        width: 238px;
+    }
+}
