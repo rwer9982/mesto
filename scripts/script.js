@@ -15,7 +15,8 @@ const validationForm = {
 
 
 
-
+const increasedImagePopup = document.querySelector('#popup-image');
+const increasedImageCloseButton = document.querySelector('#increased-image-close-button');
 
 const editFormButton = document.querySelector(".profile__edit-button");
 const popupEdit = document.querySelector("#popup-edit-form");
@@ -73,7 +74,7 @@ const newItemSubmitButton = document.querySelector("#new-item-form-submit-button
 const addItemFormValidator = new FormValidator(validationForm, formElementAddItem);
 addItemFormValidator.enableValidation();
 
-const cardsList = document.querySelector('.elements');
+const cardsContainer = document.querySelector('.elements');
 
 
 const initialCards = [
@@ -112,7 +113,7 @@ function handleCardFormSubmit(evt) {
     addCard(cardNewItem);
     closePopup(popupNewItem);
     evt.target.reset();
-    addItemFormValidator.resetForm();
+    addItemFormValidator.disableSubmitButton();
 };
 
 
@@ -129,8 +130,7 @@ formElementAddItem.addEventListener("submit", handleCardFormSubmit);
 //закрытие большой картинки
 
 
-const increasedImagePopup = document.querySelector('#popup-image');
-const increasedImageCloseButton = document.querySelector('#increased-image-close-button');
+
 
 increasedImageCloseButton.addEventListener("click", () => {
     closePopup(increasedImagePopup);
@@ -141,11 +141,12 @@ increasedImageCloseButton.addEventListener("click", () => {
 //тут была функция
 
 //открытие большой картинки
-export function handleOpenImagePopup() {
-    document.querySelector('.increased-image__title').textContent = document.querySelector('.element__title').textContent;
-    document.querySelector('.increased-image__image').src = document.querySelector('#element-image').src;
-    document.querySelector('.increased-image__image').alt = document.querySelector('#element-image').alt;
-    document.querySelector('.popup-image').classList.add('popup_opened');
+export function handleOpenImagePopup(name, link, text) {
+    document.querySelector('.increased-image__title').textContent = name;
+    document.querySelector('.increased-image__image').src = link;
+    document.querySelector('.increased-image__image').alt = text;
+
+    openPopup(increasedImagePopup);
 }
 
 //закрытие попапа на оверлей и Esc
@@ -171,14 +172,18 @@ function closeByEscape(evt) {
 }
 
 
-
 function addCard(cardItem) {
+    const cardElement = createCard(cardItem);
+    cardsContainer.prepend(cardElement)
+}
+
+function createCard(cardItem) {
     const card = new Card(cardItem, '.element-template');
-    const cardElement = card.generateCard();
-    
-    cardsList.prepend(cardElement);
+
+    return card.generateCard();
 }
 
 initialCards.forEach((cardItem) => {
+
     addCard(cardItem)
 });

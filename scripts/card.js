@@ -2,11 +2,10 @@ import { handleOpenImagePopup } from "./script.js";
 
 
 export class Card {
-    constructor(data, templateSelector, openPopupImage) {
+    constructor(data, templateSelector) {
         this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
-        this._openPopupImage = openPopupImage;
     }
 
     _getTemplate() {
@@ -28,7 +27,7 @@ export class Card {
     _setEventListeners() {
         this._element.querySelector('.element__like').addEventListener('click', this._toggleLikeButton);
         this._element.querySelector('.element__trash-button').addEventListener('click', this._deleteCard.bind(this));
-        this._element.querySelector('#element-image').addEventListener('click', this.handleOpenImagePopup);
+        this._element.querySelector('#element-image').addEventListener('click', this._handleOpenImagePopup);
     }
     _toggleLikeButton(evt) {
         evt.target.classList.toggle('element__like_active');
@@ -36,8 +35,9 @@ export class Card {
     _deleteCard() {
         this._element.remove();
     }
-    handleOpenImagePopup() {
-        handleOpenImagePopup()
+    _handleOpenImagePopup() {
+        handleOpenImagePopup(this._name, this._link, this._name)
+
     }
     
 }

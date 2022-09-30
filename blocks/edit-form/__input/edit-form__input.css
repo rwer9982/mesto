@@ -8,6 +8,7 @@
     border: none;
     outline:none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
+    
 }
 
 @media screen and (max-width: 597px) {
@@ -22,7 +23,7 @@
 }
 
 .edit-form__input:last-of-type {
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 @media screen and (max-width: 597px) {
