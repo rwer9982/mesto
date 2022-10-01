@@ -27,7 +27,7 @@ export class Card {
     _setEventListeners() {
         this._element.querySelector('.element__like').addEventListener('click', this._toggleLikeButton);
         this._element.querySelector('.element__trash-button').addEventListener('click', this._deleteCard.bind(this));
-        this._element.querySelector('#element-image').addEventListener('click', this._handleOpenImagePopup);
+        this._element.querySelector('#element-image').addEventListener('click', this._handleOpenImagePopup.bind(this));
     }
     _toggleLikeButton(evt) {
         evt.target.classList.toggle('element__like_active');
@@ -36,7 +36,7 @@ export class Card {
         this._element.remove();
     }
     _handleOpenImagePopup() {
-        handleOpenImagePopup(this._name, this._link, this._name)
+        handleOpenImagePopup(this._name, this._link)
 
     }
     

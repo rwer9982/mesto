@@ -141,10 +141,12 @@ increasedImageCloseButton.addEventListener("click", () => {
 //тут была функция
 
 //открытие большой картинки
+const BigImage = document.querySelector('.increased-image__image');
+const BigImageTitle = document.querySelector('.increased-image__title');
 export function handleOpenImagePopup(name, link, text) {
-    document.querySelector('.increased-image__title').textContent = name;
-    document.querySelector('.increased-image__image').src = link;
-    document.querySelector('.increased-image__image').alt = text;
+    BigImageTitle.textContent = name;
+    BigImage.src = link;
+    BigImage.alt = text;
 
     openPopup(increasedImagePopup);
 }

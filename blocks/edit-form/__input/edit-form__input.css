@@ -7,6 +7,7 @@
     margin-left: 36px;
     border: none;
     outline:none;
+    position: absolute;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     
 }
@@ -19,15 +20,21 @@
 }
 
 .edit-form__input:first-of-type {
-    margin-top: 54px;
+    margin-top: 96px;
 }
 
 .edit-form__input:last-of-type {
-    margin-top: 35px;
+    margin-top: 163px;
 }
 
 @media screen and (max-width: 597px) {
     .edit-form__input:first-of-type {
-        margin-top: 70px;
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 597px) {
+    .edit-form__input:last-of-type {
+        margin-top: 175px;
     }
 }

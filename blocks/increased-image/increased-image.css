@@ -5,5 +5,6 @@
     max-width: 75vw;
     max-height: 75vh;
     min-width: 240px;
-    overflow: visible;
+    min-height: 240px;
+    position: relative;
 }

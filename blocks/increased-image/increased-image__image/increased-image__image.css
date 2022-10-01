@@ -1,7 +1,5 @@
 .increased-image__image {
-    margin-top: 8px;
-    max-width: 75vw;
-    max-height: 75vh;
+    min-height: 190px;
 }
 
 @media screen and (max-width: 597px) {
