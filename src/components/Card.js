@@ -1,4 +1,5 @@
-import { handleOpenImagePopup } from "./script.js";
+//import { handleOpenImagePopup } from "./script.js";
+import { PopupWithImage } from './PopupWithImage.js';
 
 
 export class Card {
@@ -36,8 +37,9 @@ export class Card {
         this._element.remove();
     }
     _handleOpenImagePopup() {
-        handleOpenImagePopup(this._name, this._link)
+        const openImage = new PopupWithImage("#popup-image");
+        openImage.openPopup(this._name, this._link)
 
     }
-    
+
 }

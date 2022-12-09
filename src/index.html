@@ -5,26 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="логотип_заголовка">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип_заголовка">
     </header>
     <main class="main">
       <section class="profile">
-        <img class="profile__avatar" src="images/Avatar.jpg" alt="лого_аватар">
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="лого_аватар">
         <div class="profile__info">
           <div class="profile__row">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button"><img src="./images/pen.png" class="profile__img-pen"
+            <button type="button" class="profile__edit-button"><img src="<%=require('./images/pen.png')%>" class="profile__img-pen"
                 alt="Иконка_ручка"></button>
           </div>
           <h2 class="profile__subtitle">Исследователь океана</h2>
         </div>
-        <button type="button" class="profile__add-button"><img src="./images/Vector.png" class="profile__vector"
+        <button type="button" class="profile__add-button"><img src="<%=require('./images/Vector.png')%>" class="profile__vector"
             alt="Картинка_плюс"></button>
       </section>
       <section class="elements">
@@ -86,7 +85,6 @@
     </div>
 
   </div>
-  <script type="module" src="./scripts/script.js" defer></script>
 
 </body>
 
