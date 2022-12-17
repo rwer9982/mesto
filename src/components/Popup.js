@@ -5,15 +5,15 @@ export class Popup {
 
     openPopup() {
         this._popup.classList.add("popup_opened");
-        document.addEventListener('keydown', this._closeByEscape);
+        document.addEventListener('keydown', this._closeByEscape.bind(this));
     };
 
     closePopup() {
         this._popup.classList.remove("popup_opened");
-        document.removeEventListener('keydown', this._closeByEscape);
+        document.removeEventListener('keydown', this._closeByEscape.bind(this));
     };
 
-    _closeByEscape(evt) {
+    _closeByEscape (evt) {
         if (evt.key === 'Escape') {
             this.closePopup();
         }
@@ -24,6 +24,9 @@ export class Popup {
             if (event.target === event.currentTarget) {
                 this.closePopup(event.currentTarget)
             }
+            if (event.target.classList.contains('popup__close')) {
+                this.closePopup(event.currentTarget);
+              }
         });
     }
 
