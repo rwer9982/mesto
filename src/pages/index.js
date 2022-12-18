@@ -25,10 +25,13 @@ const job = document.querySelector(".profile__subtitle");
 const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
 
+const nameAndJobDescription = { userName: name, userJob: job };
+const nameAndJobInput = { userName: nameInput.value, userJob: jobInput.value }
+
 const formEditValidator = new FormValidator(validationForm, popupEdit);
 formEditValidator.enableValidation();
 
-const userInfoChanger = new UserInfo(name, job);
+const userInfoChanger = new UserInfo(nameAndJobDescription);
 
 function addUserInfo(data) {
     userInfoChanger.setUserInfo(data);
@@ -39,8 +42,10 @@ const popupEditForm = new PopupWithForm("#popup-edit-form", "#edit-form", addUse
 popupEditForm.setEventListeners();
 
 function fillEditFormFields() {
-    nameInput.value = name.textContent;
-    jobInput.value = job.textContent;
+    //    nameInput.value = name.textContent;
+    //    jobInput.value = job.textContent;
+    userInfoChanger.getUserInfo();
+    userInfoChanger.setUserInfo(nameAndJobInput);
 }
 
 buttonEditForm.addEventListener("click", () => {

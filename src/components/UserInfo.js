@@ -1,5 +1,5 @@
 export class UserInfo {
-    constructor(userName, userJob) {
+    constructor({userName, userJob}) {
         this._name = userName;
         this._job = userJob;
     }
