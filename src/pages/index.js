@@ -8,7 +8,6 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 
 
 
-
 const validationForm = {
     formSelector: '.edit-form',
     inputSelector: '.edit-form__input',
@@ -20,13 +19,10 @@ const validationForm = {
 
 const buttonEditForm = document.querySelector(".profile__edit-button");
 const popupEdit = document.querySelector("#popup-edit-form");
-const name = document.querySelector(".profile__title");
-const job = document.querySelector(".profile__subtitle");
 const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
 
-const nameAndJobDescription = { userName: name, userJob: job };
-const nameAndJobInput = { userName: nameInput.value, userJob: jobInput.value }
+const nameAndJobDescription = { userName: ".profile__title", userJob: ".profile__subtitle" };
 
 const formEditValidator = new FormValidator(validationForm, popupEdit);
 formEditValidator.enableValidation();
@@ -42,10 +38,8 @@ const popupEditForm = new PopupWithForm("#popup-edit-form", "#edit-form", addUse
 popupEditForm.setEventListeners();
 
 function fillEditFormFields() {
-    //    nameInput.value = name.textContent;
-    //    jobInput.value = job.textContent;
-    userInfoChanger.getUserInfo();
-    userInfoChanger.setUserInfo(nameAndJobInput);
+    nameInput.value = userInfoChanger.getUserInfo().name;
+    jobInput.value = userInfoChanger.getUserInfo().job;
 }
 
 buttonEditForm.addEventListener("click", () => {
