@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
+  <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="body">
@@ -14,14 +15,17 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="лого_аватар">
+        <div class="profile__avatar-container">
+          <img class="profile__avatar" alt="лого_аватар">
+          <img class="profile__pen">
+        </div>
         <div class="profile__info">
           <div class="profile__row">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button type="button" class="profile__edit-button"><img src="<%=require('./images/pen.png')%>" class="profile__img-pen"
                 alt="Иконка_ручка"></button>
           </div>
-          <h2 class="profile__subtitle">Исследователь океана</h2>
+          <h2 class="profile__subtitle"></h2>
         </div>
         <button type="button" class="profile__add-button"><img src="<%=require('./images/Vector.png')%>" class="profile__vector"
             alt="Картинка_плюс"></button>
@@ -44,7 +48,7 @@
           <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие" class="edit-form__input"
             minlength="2" maxlength="200" required>
           <p class="edit-form__span edit-form-subtitle-error"></p>
-          <button type="submit" class="edit-form__submit-button">Сохранить</button>
+          <button type="submit" class="edit-form__submit-button" id="edit-form-submit-button">Сохранить</button>
         </form>
       </div>
     </div>
@@ -65,26 +69,54 @@
       </div>
     </div>
 
+    <div class="popup" id="popup-submit">
+      <div class="popup__form-container">
+        <form class="submit-form" id="submit-form" novalidate>
+          <button type="button" class="edit-form__close-button popup__close" id="submit-form-close-button"></button>
+          <h3 class="edit-form__title">Вы уверены?</h3>
+          <button type="submit" class="submit-form__submit-button" id="submit-form-submit-button">Да</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-edit-avatar-form">
+      <div class="popup__form-container">
+        <form class="edit-avatar-form" name="item-changer" id="edit-avatar-form" novalidate>
+          <button type="button" class="edit-form__close-button popup__close" id="edit-avatar-form-close-button"></button>
+          <h3 class="edit-form__title">Обновить аватар</h3>
+          <input type="url" name="place-link" id="edit-avatar" placeholder="Ссылка на картинку"
+            class="edit-avatar-form__input" required>
+          <p class="edit-avatar-form__span edit-avatar-error"></p>
+          <button type="submit" class="edit-avatar-form__submit-button" id="avatar-form-submit-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
     <template class="element-template">
       <div class="element">
         <button type="button" class="element__trash-button"></button>
         <img class="element__image" alt="Фото_места" id="element-image">
         <div class="element__title">
           <h2 class="element__text"></h2>
-          <button type="button" class="element__like" id="like-button"></button>
+          <div class="element__likes-container">
+            <button type="button" class="element__like" id="like-button"></button>
+            <span class="element__likes-count"></span>
+          </div>
         </div>
       </div>
     </template>
 
     <div class="popup" id="popup-image">
       <div class="increased-image">
-        <button type="button" class="increased-image__close-button popup__close" id="increased-image-close-button"></button>
+        <button type="button" class="increased-image__close-button popup__close"
+          id="increased-image-close-button"></button>
         <img class="increased-image__image" alt="Фото_места">
         <h4 class="increased-image__title"></h4>
       </div>
     </div>
 
   </div>
+  <script type="module" src="./scripts/script.js" defer></script>
 
 </body>
 
