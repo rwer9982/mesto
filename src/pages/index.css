@@ -41,3 +41,16 @@
 @import url(../blocks/edit-form/__input/_with-error/edit-form__input_with-error.css);
 @import url(../blocks/edit-form/__span/edit-form__span.css);
 @import url(../blocks/edit-form/__span/_visible/edit-form__span_visible.css);
+@import url(../blocks/element/__likes-container/element__likes-container.css);
+@import url(../blocks/element/__likes-count/element__likes-count.css);
+@import url(../blocks/submit-form/submit-form.css);
+@import url(../blocks/submit-form/__submit-button/submit-form__submit-button.css);
+@import url(../blocks/profile/__pen/profile__pen.css);
+@import url(../blocks/profile/__avatar-container/profile__avatar-container.css);
+@import url(../blocks/edit-avatar-form/edit-avatar-form.css);
+@import url(../blocks/edit-avatar-form/__input/edit-avatar-form__input.css);
+@import url(../blocks/edit-avatar-form/__submit-button/edit-avatar-form__submit-button.css);
+@import url(../blocks/edit-avatar-form/__submit-button/_disabled/edit-avatar-form__submit-button_disabled.css);
+@import url(../blocks/edit-avatar-form/__input/_with-error/edit-avatar-form__input_with-error.css);
+@import url(../blocks/edit-avatar-form/__span/edit-avatar-form__span.css);
+@import url(../blocks/edit-avatar-form/__span/_visible/edit-avatar-form__span_visible.css);

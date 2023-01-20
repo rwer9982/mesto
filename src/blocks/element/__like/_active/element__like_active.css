@@ -1,7 +1,6 @@
 .element__like_active {
-    margin: 0;
     padding: 0;
-    margin-left: auto;
+    margin: auto;
     display: block;
     border: none;
     background-color: white;

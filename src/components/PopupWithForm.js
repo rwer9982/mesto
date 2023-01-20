@@ -8,16 +8,6 @@ export class PopupWithForm extends Popup {
         this._inputElements = this._form.querySelectorAll('.edit-form__input');
     }
 
-    //    handleCardFormSubmit(evt) {
-    //      evt.preventDefault();
-    //        const cardNewItem = { name: newItemNameInput.value, link: newItemImageInput.value };
-    //
-    //        todoList.addItem(createCard(cardNewItem))
-    ///        closePopup(popupNewItem);
-    ///        evt.target.reset();
-    //        addItemFormValidator.disableSubmitButton();
-    //    };
-
     _getInputValues() {
         const cardNewItem = {};
 
@@ -25,6 +15,10 @@ export class PopupWithForm extends Popup {
             cardNewItem[input.name] = input.value;
         })
         return cardNewItem;
+    }
+
+    changeSubmitHandler(newSubmitHandler) {
+        this._handleCardFormSubmit = newSubmitHandler;
     }
 
     closePopup() {
@@ -40,4 +34,5 @@ export class PopupWithForm extends Popup {
             this.closePopup();
         });
     }
+
 }
