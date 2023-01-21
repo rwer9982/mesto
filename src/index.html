@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="body">
@@ -72,8 +71,8 @@
     <div class="popup" id="popup-submit">
       <div class="popup__form-container">
         <form class="submit-form" id="submit-form" novalidate>
-          <button type="button" class="edit-form__close-button popup__close" id="submit-form-close-button"></button>
-          <h3 class="edit-form__title">Вы уверены?</h3>
+          <button type="button" class="submit-form__close-button popup__close" id="submit-form-close-button"></button>
+          <h3 class="submit-form__title">Вы уверены?</h3>
           <button type="submit" class="submit-form__submit-button" id="submit-form-submit-button">Да</button>
         </form>
       </div>
@@ -82,8 +81,8 @@
     <div class="popup" id="popup-edit-avatar-form">
       <div class="popup__form-container">
         <form class="edit-avatar-form" name="item-changer" id="edit-avatar-form" novalidate>
-          <button type="button" class="edit-form__close-button popup__close" id="edit-avatar-form-close-button"></button>
-          <h3 class="edit-form__title">Обновить аватар</h3>
+          <button type="button" class="edit-avatar-form__close-button popup__close" id="edit-avatar-form-close-button"></button>
+          <h3 class="edit-avatar-form__title">Обновить аватар</h3>
           <input type="url" name="place-link" id="edit-avatar" placeholder="Ссылка на картинку"
             class="edit-avatar-form__input" required>
           <p class="edit-avatar-form__span edit-avatar-error"></p>
@@ -116,7 +115,6 @@
     </div>
 
   </div>
-  <script type="module" src="./scripts/script.js" defer></script>
 
 </body>
 

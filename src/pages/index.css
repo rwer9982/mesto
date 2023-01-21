@@ -54,3 +54,7 @@
 @import url(../blocks/edit-avatar-form/__input/_with-error/edit-avatar-form__input_with-error.css);
 @import url(../blocks/edit-avatar-form/__span/edit-avatar-form__span.css);
 @import url(../blocks/edit-avatar-form/__span/_visible/edit-avatar-form__span_visible.css);
+@import url(../blocks/submit-form/__close-button/submit-form__close-button.css);
+@import url(../blocks/submit-form/__title/submit-form__title.css);
+@import url(../blocks/edit-avatar-form/__close-button/edit-avatar-form__close-button.css);
+@import url(../blocks/edit-avatar-form/__title/edit-avatar-form__title.css);
