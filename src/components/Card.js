@@ -14,6 +14,8 @@ export class Card {
         this._openPopupImage = handleOpenPopupImage;
         this._handleDeleteConfirm = handleDeleteConfirm;
         this._handleLikeClick = handleLikeClick;
+//        this._element = this._getTemplate();
+//        this._likesCountElement = this._element.querySelector('.element__likes-count');
     }
 
     _getTemplate() {
@@ -23,12 +25,11 @@ export class Card {
 
     setLikes(newLikes) {
         this._likes = newLikes;
-        const likesCountElement = this._element.querySelector('.element__likes-count');
-        likesCountElement.textContent = this._likes.length;
+        this._likesCountElement.textContent = this._likes.length;
 
         if (this.isLiked()) {
             this._addLikeButtonActiveState()
-        }   else {
+        } else {
             this._removeLikeButtonActiveState()
         }
     }
@@ -51,6 +52,7 @@ export class Card {
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('#element-image');
         this._buttonLike = this._element.querySelector('.element__like');
+        this._likesCountElement = this._element.querySelector('.element__likes-count');
         this._setEventListeners();
 
         this._cardImage.src = this._link;
@@ -60,7 +62,7 @@ export class Card {
         this.setLikes(this._likes)
 
         if (this._ownerId !== this._userId) {
-            this._element.querySelector('.element__trash-button').style.display = 'none';
+            this._element.querySelector('.element__trash-button').classList.add('element__trash-button_inactive');
         }
 
         return this._element;

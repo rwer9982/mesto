@@ -21,8 +21,8 @@
         <div class="profile__info">
           <div class="profile__row">
             <h1 class="profile__title"></h1>
-            <button type="button" class="profile__edit-button"><img src="<%=require('./images/pen.png')%>" class="profile__img-pen"
-                alt="Иконка_ручка"></button>
+            <button type="button" class="profile__edit-button"><img src="<%=require('./images/pen.png')%>"
+                class="profile__img-pen" alt="Иконка_ручка"></button>
           </div>
           <h2 class="profile__subtitle"></h2>
         </div>
@@ -38,55 +38,60 @@
     </footer>
     <div class="popup" id="popup-edit-form">
       <div class="popup__form-container">
-        <form class="edit-form" id="edit-form" name="job-and-name" novalidate>
+        <form class="edit-form form" id="edit-form" name="job-and-name" novalidate>
           <button type="button" class="edit-form__close-button popup__close" id="edit-form-close-button"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
-          <input type="text" name="job" placeholder="Введите имя" id="edit-form-title" class="edit-form__input"
+          <input type="text" name="job" placeholder="Введите имя" id="edit-form-title" class="edit-form__input input"
             minlength="2" maxlength="40" required>
           <p class="edit-form__span edit-form-title-error"></p>
-          <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие" class="edit-form__input"
-            minlength="2" maxlength="200" required>
+          <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие"
+            class="edit-form__input input" minlength="2" maxlength="200" required>
           <p class="edit-form__span edit-form-subtitle-error"></p>
-          <button type="submit" class="edit-form__submit-button" id="edit-form-submit-button">Сохранить</button>
+          <button type="submit" class="edit-form__submit-button submit-button"
+            id="edit-form-submit-button">Сохранить</button>
         </form>
       </div>
     </div>
 
     <div class="popup" id="popup-new-item-form">
       <div class="popup__form-container">
-        <form class="edit-form" name="item-changer" id="add-item-form" novalidate>
+        <form class="edit-form form" name="item-changer" id="add-item-form" novalidate>
           <button type="button" class="edit-form__close-button popup__close" id="new-item-form-close-button"></button>
           <h3 class="edit-form__title">Новое место</h3>
-          <input type="text" name="place-name" id="add-card-text" placeholder="Название" class="edit-form__input"
+          <input type="text" name="name" id="add-card-text" placeholder="Название" class="edit-form__input input"
             minlength="2" maxlength="30" required>
           <p class="edit-form__span add-card-text-error"></p>
-          <input type="url" name="place-link" id="add-card-image" placeholder="Ссылка на картинку"
-            class="edit-form__input" required>
+          <input type="url" name="link" id="add-card-image" placeholder="Ссылка на картинку"
+            class="edit-form__input input" required>
           <p class="edit-form__span add-card-image-error"></p>
-          <button type="submit" class="edit-form__submit-button" id="new-item-form-submit-button">Создать</button>
+          <button type="submit" class="edit-form__submit-button submit-button"
+            id="new-item-form-submit-button">Создать</button>
         </form>
       </div>
     </div>
 
     <div class="popup" id="popup-submit">
       <div class="popup__form-container">
-        <form class="submit-form" id="submit-form" novalidate>
+        <form class="submit-form form" id="submit-form" novalidate>
           <button type="button" class="submit-form__close-button popup__close" id="submit-form-close-button"></button>
           <h3 class="submit-form__title">Вы уверены?</h3>
-          <button type="submit" class="submit-form__submit-button" id="submit-form-submit-button">Да</button>
+          <button type="submit" class="submit-form__submit-button submit-button"
+            id="submit-form-submit-button">Да</button>
         </form>
       </div>
     </div>
 
     <div class="popup" id="popup-edit-avatar-form">
       <div class="popup__form-container">
-        <form class="edit-avatar-form" name="item-changer" id="edit-avatar-form" novalidate>
-          <button type="button" class="edit-avatar-form__close-button popup__close" id="edit-avatar-form-close-button"></button>
+        <form class="edit-avatar-form form" name="item-changer" id="edit-avatar-form" novalidate>
+          <button type="button" class="edit-avatar-form__close-button popup__close"
+            id="edit-avatar-form-close-button"></button>
           <h3 class="edit-avatar-form__title">Обновить аватар</h3>
-          <input type="url" name="place-link" id="edit-avatar" placeholder="Ссылка на картинку"
-            class="edit-avatar-form__input" required>
+          <input type="url" name="avatar" id="edit-avatar" placeholder="Ссылка на картинку"
+            class="input edit-avatar-form__input" required>
           <p class="edit-avatar-form__span edit-avatar-error"></p>
-          <button type="submit" class="edit-avatar-form__submit-button" id="avatar-form-submit-button">Сохранить</button>
+          <button type="submit" class="edit-avatar-form__submit-button submit-button"
+            id="avatar-form-submit-button">Сохранить</button>
         </form>
       </div>
     </div>

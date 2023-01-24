@@ -5,7 +5,7 @@ export class FormValidator {
         this.formElement = formElement;
         this.inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
         this.buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
-        this.currentInputElement = Array.from(formElement.querySelector(validationConfig.inputSelector));
+//        this.currentInputElement = Array.from(formElement.querySelector(validationConfig.inputSelector));
     }
 
     _showInputError(inputElement, errorMessage) {

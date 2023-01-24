@@ -5,7 +5,7 @@ export class Section {
     }
 
     addItem(todoNode) {
-        this._container.append(todoNode)
+        this._container.prepend(todoNode)
     }
 
     renderItems(todosArray) {

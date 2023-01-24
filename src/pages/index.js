@@ -6,18 +6,16 @@ import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { api } from '../components/Api.js';
+import { PopupConfirm } from '../components/PopupConfirm.js';
 
 let userId
 
-api.getProfile()
-    .then(res => {
-        userInfoChanger.setUserInfoDefault({ name: res.name, job: res.about, avatar: res.avatar })
+Promise.all([api.getProfile(), api.getCards()])
+    .then(([res, cardList]) => {
+        userInfoChanger.setUserInfo({ name: res.name, job: res.about })
+        userInfoChanger.setUserAvatar({ avatar: res.avatar })
         userId = res._id
-    })
 
-
-api.getCards()
-    .then(cardList => {
         cardList.forEach(data => {
             const card = createCard({
                 name: data.name,
@@ -27,8 +25,12 @@ api.getCards()
                 userId: userId,
                 ownerId: data.owner._id
             })
-            todoList.addItem(card)
+            cardsList.addItem(card)
         })
+
+    })
+    .catch((err) => {
+        console.log(err);
     })
 
 
@@ -46,7 +48,6 @@ const buttonEditForm = document.querySelector(".profile__edit-button");
 const popupEdit = document.querySelector("#popup-edit-form");
 const nameInput = document.querySelector("#edit-form-title");
 const jobInput = document.querySelector("#edit-form-subtitle");
-const editFormSubmitButton = document.querySelector("#edit-form-submit-button")
 
 const nameAndJobDescription = { userName: ".profile__title", userJob: ".profile__subtitle", userAvatar: ".profile__avatar" };
 
@@ -56,26 +57,19 @@ formEditValidator.enableValidation();
 
 const userInfoChanger = new UserInfo(nameAndJobDescription);
 
-function setLoadingMessage(loading, sumbitButton) {
-    if (loading) {
-        sumbitButton.innerText = 'Сохраняется...'
-    }
-    else {
-        sumbitButton.innerText = 'Сохранить'
-    }
-}
-
 function addUserInfo(data) {
-    setLoadingMessage(true, editFormSubmitButton)
+    popupEditForm.setLoadingMessage(true)
+
     api.editProfile(data.name, data.job)
         .then(() => {
-            userInfoChanger.setUserInfo(data)
+            userInfoChanger.setUserInfo(data);
+            popupEditForm.closePopup();
         })
         .catch(function (err) {
             console.log('Ошибка', err)
         })
         .finally(function () {
-            setLoadingMessage(false, editFormSubmitButton)
+            popupEditForm.setLoadingMessage(false)
         })
 }
 
@@ -92,7 +86,7 @@ buttonEditForm.addEventListener("click", () => {
     fillEditFormFields();
     popupEditForm.openPopup();
 });
-//////////////////////////////////////////АВАТАР!!
+
 const validationFormAvatar = {
     formSelector: '.edit-avatar-form',
     inputSelector: '.edit-avatar-form__input',
@@ -104,9 +98,8 @@ const validationFormAvatar = {
 
 const buttonAvatarForm = document.querySelector(".profile__avatar-container");
 const popupEditAvatar = document.querySelector("#popup-edit-avatar-form");
-const avatarInput = document.querySelector("#edit-avatar");
+//const avatarInput = document.querySelector("#edit-avatar");
 
-const avatarSubmitButton = document.querySelector(".edit-avatar-form__submit-button")
 
 
 const popupEditAvatarForm = new PopupWithForm("#popup-edit-avatar-form", "#edit-avatar-form", addAvatar);
@@ -122,69 +115,34 @@ buttonAvatarForm.addEventListener("click", () => {
 })
 
 function addAvatar(data) {
-
-    data.avatar = avatarInput.value;
-    setLoadingMessage(true, avatarSubmitButton)
+    popupEditAvatarForm.setLoadingMessage(true)
     api.editAvatar(data.avatar)
-        .then(res => {
-            const avatar = {
-                avatar: res.avatar,
-            }
-            userInfoChanger.setUserAvatar(avatar)
+        .then(() => {
+            userInfoChanger.setUserAvatar(data);
+            popupEditAvatarForm.closePopup();
         })
         .catch(function (err) {
             console.log('Ошибка', err)
         })
         .finally(function () {
-            setLoadingMessage(false, avatarSubmitButton)
+            popupEditAvatarForm.setLoadingMessage(false)
         })
 }
 
 
-//////////////////////////////////////////АВАТАР1!!!
+
 
 const addNewItemButton = document.querySelector(".profile__add-button");
 const formElementAddItem = document.querySelector("#add-item-form");
-const newItemImageInput = document.querySelector("#add-card-image");
-const newItemNameInput = document.querySelector("#add-card-text");
-const newItemFormSubmitButton = document.querySelector("#new-item-form-submit-button")
+//const newItemImageInput = document.querySelector("#add-card-image");
+//const newItemNameInput = document.querySelector("#add-card-text");
 
 const itemAddFormValidator = new FormValidator(validationForm, formElementAddItem);
 itemAddFormValidator.enableValidation();
 
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 function addCard(data) {
 
-    data.name = newItemNameInput.value;
-    data.link = newItemImageInput.value;
-
-    setLoadingMessage(true, newItemFormSubmitButton)
+    popupNewItem.setLoadingMessage(true)
 
     api.addCard(data.name, data.link)
         .then(res => {
@@ -196,14 +154,15 @@ function addCard(data) {
             })
 
 
-            console.log('res', res)
-            todoList.addItem(card);
+            //            console.log('res', res)
+            cardsList.addItem(card);
+            popupNewItem.closePopup();
         })
         .catch(function (err) {
             console.log('Ошибка', err)
         })
         .finally(function () {
-            setLoadingMessage(false, newItemFormSubmitButton)
+            popupNewItem.setLoadingMessage(false)
         })
 }
 
@@ -222,11 +181,11 @@ const popupImage = new PopupWithImage("#popup-image");
 
 popupImage.setEventListeners();
 
-const popupConfirm = new PopupWithForm("#popup-submit", "#submit-form");
+const popupConfirm = new PopupConfirm("#popup-submit", "#submit-form");
 popupConfirm.setEventListeners();
 
-const todoList = new Section('.elements', (cardItem) => {
-    todoList.addItem(createCard(cardItem))
+const cardsList = new Section('.elements', (cardItem) => {
+    cardsList.addItem(createCard(cardItem))
 });
 
 
@@ -238,11 +197,20 @@ function createCard(cardItem) {
     }, cardItem, '.element-template',
         (id) => {
             popupConfirm.openPopup();
-            popupConfirm.changeSubmitHandler(() => {
+
+            popupConfirm.setSubmit(() => {
+                popupConfirm.setLoadingMessage(true);
                 api.deleteCard(id)
                     .then(res => {
                         card.deleteCard();
-                        console.log(res)
+                        popupConfirm.closePopup();
+
+                    })
+                    .catch(function (err) {
+                        console.log('Ошибка', err)
+                    })
+                    .finally(res => {
+                        popupConfirm.setLoadingMessage(false)
                     })
             })
         },
@@ -251,13 +219,17 @@ function createCard(cardItem) {
                 api.deleteLike(id)
                     .then(res => {
                         card.setLikes(res.likes)
-                        //                    console.log(res)
+                    })
+                    .catch(function (err) {
+                        console.log('Ошибка', err)
                     })
             } else {
                 api.addLike(id)
                     .then(res => {
                         card.setLikes(res.likes)
-                        //                    console.log(res)
+                    })
+                    .catch(function (err) {
+                        console.log('Ошибка', err)
                     })
             }
         }

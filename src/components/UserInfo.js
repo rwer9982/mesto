@@ -17,12 +17,6 @@ export class UserInfo {
         this._job.textContent = data.job;
     }
 
-    setUserInfoDefault(data) {
-        this._name.textContent = data.name;
-        this._job.textContent = data.job;
-        this._avatar.src = data.avatar;
-    }
-
     setUserAvatar(data) {
         this._avatar.src = data.avatar;
     }
