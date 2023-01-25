@@ -26,8 +26,8 @@
           </div>
           <h2 class="profile__subtitle"></h2>
         </div>
-        <button type="button" class="profile__add-button"><img src="<%=require('./images/Vector.png')%>" class="profile__vector"
-            alt="Картинка_плюс"></button>
+        <button type="button" class="profile__add-button"><img src="<%=require('./images/Vector.png')%>"
+            class="profile__vector" alt="Картинка_плюс"></button>
       </section>
       <section class="elements">
 
@@ -41,10 +41,10 @@
         <form class="edit-form form" id="edit-form" name="job-and-name" novalidate>
           <button type="button" class="edit-form__close-button popup__close" id="edit-form-close-button"></button>
           <h3 class="edit-form__title">Редактировать профиль</h3>
-          <input type="text" name="job" placeholder="Введите имя" id="edit-form-title" class="edit-form__input input"
+          <input type="text" name="name" placeholder="Введите имя" id="edit-form-title" class="edit-form__input input"
             minlength="2" maxlength="40" required>
           <p class="edit-form__span edit-form-title-error"></p>
-          <input type="text" name="name" id="edit-form-subtitle" placeholder="Введите занятие"
+          <input type="text" name="job" id="edit-form-subtitle" placeholder="Введите занятие"
             class="edit-form__input input" minlength="2" maxlength="200" required>
           <p class="edit-form__span edit-form-subtitle-error"></p>
           <button type="submit" class="edit-form__submit-button submit-button"

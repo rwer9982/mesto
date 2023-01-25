@@ -126,6 +126,7 @@ function addAvatar(data) {
         })
         .finally(function () {
             popupEditAvatarForm.setLoadingMessage(false)
+            avatarFormEditValidator.disableSubmitButton()
         })
 }
 
@@ -163,6 +164,7 @@ function addCard(data) {
         })
         .finally(function () {
             popupNewItem.setLoadingMessage(false)
+            itemAddFormValidator.disableSubmitButton();
         })
 }
 
