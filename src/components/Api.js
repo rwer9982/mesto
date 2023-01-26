@@ -17,7 +17,6 @@ class Api {
             headers: this._headers
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     getCards() {
@@ -25,7 +24,6 @@ class Api {
             headers: this._headers
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     editProfile(name, about) {
@@ -38,7 +36,6 @@ class Api {
             })
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     addCard(name, link) {
@@ -51,7 +48,6 @@ class Api {
             })
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     deleteCard(id) {
@@ -60,7 +56,6 @@ class Api {
             headers: this._headers
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     deleteLike(id) {
@@ -69,7 +64,6 @@ class Api {
             headers: this._headers
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     addLike(id) {
@@ -78,7 +72,6 @@ class Api {
             headers: this._headers
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     editAvatar(avatar) {
@@ -90,7 +83,6 @@ class Api {
             })
         })
             .then(this._getResponseData)
-            .catch(console.log)
     }
 
     // другие методы работы с API

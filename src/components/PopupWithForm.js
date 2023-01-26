@@ -20,13 +20,12 @@ export class PopupWithForm extends Popup {
         return cardNewItem;
     }
 
-    changeSubmitHandler(newSubmitHandler) {
-        this._handleCardFormSubmit = newSubmitHandler;
-    }
 
     closePopup() {
         super.closePopup();
         this._form.reset();
+//        this._submitButton.classList.add('edit-form__submit-button_disabled')
+//        this._submitButton.classList.add('edit-avatar-form__submit-button_disabled')
     }
 
     setEventListeners() {

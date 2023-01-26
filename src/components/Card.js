@@ -3,13 +3,13 @@
 
 
 export class Card {
-    constructor({ handleOpenPopupImage }, data, templateSelector, handleDeleteConfirm, handleLikeClick) {
+    constructor({ handleOpenPopupImage }, data, templateSelector, {handleDeleteConfirm, handleLikeClick, userId}) {
         this._name = data.name;
         this._link = data.link;
         this._likes = data.likes;
         this._id = data.id;
-        this._ownerId = data.ownerId;
-        this._userId = data.userId;
+        this._ownerId = data.owner._id;
+        this._userId = userId;
         this._templateSelector = templateSelector;
         this._openPopupImage = handleOpenPopupImage;
         this._handleDeleteConfirm = handleDeleteConfirm;
@@ -58,6 +58,8 @@ export class Card {
         this._cardImage.src = this._link;
         this._cardImage.alt = this._name;
         this._element.querySelector('.element__text').textContent = this._name;
+
+        
 
         this.setLikes(this._likes)
 
